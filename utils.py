@@ -1,5 +1,6 @@
 import numpy as np
 import tensorflow as tf
+from sklearn.manifold import TSNE
 
 # One-of-K codification.
 def one_of_K(y, K):
