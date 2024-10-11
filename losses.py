@@ -1,3 +1,5 @@
+import tensorflow as tf
+
 class CategoricalFocalLoss(tf.keras.losses.Loss):
   def __init__(self, gamma=2.0):
     super().__init__()
