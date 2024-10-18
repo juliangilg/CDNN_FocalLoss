@@ -71,26 +71,24 @@ def multiple_annotators(R, NrP, Xtrain, ytrain):
   Xtrain = Xtrain.reshape((N,1))
   yprueba = np.ones((N,1))
 
-
+  # Define the functions to combine following the Semiparametric latent factor model.
   u_q = np.empty((Xtrain.shape[0],3))
   u_q[:,0,None] = 4.5*np.cos(2*np.pi*Xtrain + 1.5*np.pi) - \
-                             3*np.sin(4.3*np.pi*Xtrain + 0.3*np.pi)
-
+                            3*np.sin(4.3*np.pi*Xtrain + 0.3*np.pi)
   u_q[:,1,None] = 4.5*np.cos(1.5*np.pi*Xtrain + 0.5*np.pi) + \
-                     5*np.sin(3*np.pi*Xtrain + 1.5*np.pi)
-
+                    5*np.sin(3*np.pi*Xtrain + 1.5*np.pi)
   u_q[:,2,None] = 1
 
   # Now, we define the combination parameters.
   W = []
   # q=1
-  Wq1 = np.array(([[0.4],[-1.7],[-0.5],[0],[0.7]]))
+  Wq1 = np.array(([[0.4],[0.7],[-0.5],[0],[-0.7]]))
   W.append(Wq1)
   # q=2
-  Wq2 = np.array(([[0.4],[1.0],[-0.1],[-0.8],[-1.0]]))
+  Wq2 = np.array(([[0.4],[-1.0],[-0.1],[-0.8],[1.0]]))
   W.append(Wq2)
   # q=3
-  Wq3 = np.array(([[3.6],[-5.6],[-0.0],[1.2],[10.0]]))
+  Wq3 = np.array(([[3.1],[-1.8],[-0.6],[-1.2],[1.0]]))
   W.append(Wq3)
 
 
