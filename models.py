@@ -4,8 +4,9 @@ from tensorflow.keras.layers import Input, Dense
 import tensorflow as tf
 
 class DNN_FocalLoss(BaseEstimator,ClassifierMixin):
-  def __init__(self,loss=None):
+  def __init__(self,K= 2, loss=None):
     self.loss = loss
+    self.K = K
 
   def model(self, P):
     # Define the input layer
@@ -17,7 +18,7 @@ class DNN_FocalLoss(BaseEstimator,ClassifierMixin):
     x = Dense(32, activation='relu')(x)
 
     # Define the output layer
-    outputs = Dense(2, activation='softmax')(x)
+    outputs = Dense(self.K, activation='softmax')(x)
 
     # Create the model
     model = Model(inputs=inputs, outputs=outputs)
